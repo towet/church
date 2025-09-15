@@ -38,7 +38,7 @@ exports.handler = async function (event) {
     // Hardcoded email credentials
     const adminEmail = 'frankyfreaky103@gmail.com';
     const smtpUser = 'frankyfreaky103@gmail.com';
-    const smtpPass = 'PUT_YOUR_ACTUAL_GMAIL_APP_PASSWORD_HERE'; // Replace with your actual Gmail app password
+    const smtpPass = 'iisl zzrn lmpd fuvn'; // Gmail app password
 
     // Create SMTP transporter (Gmail)
     const transporter = nodemailer.createTransporter({
