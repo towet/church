@@ -42,9 +42,7 @@ exports.handler = async function (event) {
 
     // Create SMTP transporter (Gmail)
     const transporter = nodemailer.createTransporter({
-      host: 'smtp.gmail.com',
-      port: 465,
-      secure: true,
+      service: 'gmail',
       auth: { user: smtpUser, pass: smtpPass },
     });
 
@@ -139,10 +137,23 @@ Submitted on: ${new Date().toLocaleString()}`;
 
   } catch (error) {
     console.error('Email sending error:', error);
+    
+    // More detailed error logging
+    if (error.code === 'EAUTH') {
+      console.error('Authentication failed - check Gmail credentials');
+    }
+    if (error.code === 'ENOTFOUND') {
+      console.error('SMTP server not found');
+    }
+    
     return {
       statusCode: 500,
       headers: corsHeaders,
-      body: JSON.stringify({ error: 'Failed to send email', details: error.message }),
+      body: JSON.stringify({ 
+        error: 'Failed to send email', 
+        details: error.message,
+        code: error.code 
+      }),
     };
   }
 };
