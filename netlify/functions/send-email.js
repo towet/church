@@ -35,23 +35,16 @@ exports.handler = async function (event) {
       .map(([k]) => k)
       .join(', ');
 
-    const adminEmail = process.env.ADMIN_EMAIL;
-    const smtpUser = process.env.SMTP_USER;
-    const smtpPass = process.env.SMTP_PASS;
+    // Hardcoded email credentials
+    const adminEmail = 'frankyfreaky103@gmail.com';
+    const smtpUser = 'frankyfreaky103@gmail.com';
+    const smtpPass = 'your-gmail-app-password'; // Replace with your actual Gmail app password
 
-    if (!adminEmail || !smtpUser || !smtpPass) {
-      return {
-        statusCode: 500,
-        headers: corsHeaders,
-        body: JSON.stringify({ error: 'Server email is not configured. Set ADMIN_EMAIL, SMTP_USER, and SMTP_PASS in Netlify environment variables.' }),
-      };
-    }
-
-    // Create SMTP transporter (Gmail example)
+    // Create SMTP transporter (Gmail)
     const transporter = nodemailer.createTransporter({
-      host: process.env.SMTP_HOST || 'smtp.gmail.com',
-      port: process.env.SMTP_PORT ? Number(process.env.SMTP_PORT) : 465,
-      secure: process.env.SMTP_SECURE ? process.env.SMTP_SECURE === 'true' : true,
+      host: 'smtp.gmail.com',
+      port: 465,
+      secure: true,
       auth: { user: smtpUser, pass: smtpPass },
     });
 
