@@ -41,7 +41,7 @@ exports.handler = async function (event) {
     const smtpPass = 'iisl zzrn lmpd fuvn'; // Gmail app password
 
     // Create SMTP transporter (Gmail)
-    const transporter = nodemailer.createTransporter({
+    const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: { user: smtpUser, pass: smtpPass },
     });
