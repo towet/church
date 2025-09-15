@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { ArrowRight, BookOpen, Users, Globe } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import heroBackground from '@/assets/hero-background.jpg';
 
 export const HeroSection = () => {
@@ -58,13 +59,15 @@ export const HeroSection = () => {
 
           {/* CTA Buttons */}
           <div className="flex justify-center items-center mb-20 md:mb-32">
-            <Button 
-              size="lg" 
-              className="bg-gradient-gold text-primary font-bold px-8 py-4 text-lg hover:shadow-gold transition-all duration-300 hover:scale-105"
-            >
-              Start Your Journey
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
+            <Link to="/registration">
+              <Button 
+                size="lg" 
+                className="bg-gradient-gold text-primary font-bold px-8 py-4 text-lg hover:shadow-gold transition-all duration-300 hover:scale-105"
+              >
+                Start Your Journey
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
